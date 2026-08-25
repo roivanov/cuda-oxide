@@ -1,7 +1,7 @@
 ---
-# Port of crates/cutile-rs/.github/workflows/pr.yml for the monorepo.
+# Port of cutile-rs/.github/workflows/pr.yml for the monorepo.
 # cutile-rs remains a nested Cargo workspace until workspace membership is
-# reconciled, so cargo/script steps run under crates/cutile-rs.
+# reconciled, so cargo/script steps run under cutile-rs.
 name: cutile-rs-pr
 
 on:
@@ -66,38 +66,38 @@ jobs:
           rustup default nightly
 
       - name: TileIR toolchain smoke test
-        working-directory: crates/cutile-rs
+        working-directory: cutile-rs
         run: |
           source "${HOME}/.cargo/env"
           command -v tileiras
           cargo test -p cutile-ir --test bytecode_validate simple_arithmetic -- --exact --nocapture
 
       - name: Build
-        working-directory: crates/cutile-rs
+        working-directory: cutile-rs
         run: |
           source "${HOME}/.cargo/env"
           cargo build
 
       - name: Format check
-        working-directory: crates/cutile-rs
+        working-directory: cutile-rs
         run: |
           source "${HOME}/.cargo/env"
           cargo fmt -- --check
 
       - name: Clippy
-        working-directory: crates/cutile-rs
+        working-directory: cutile-rs
         run: |
           source "${HOME}/.cargo/env"
           cargo clippy
 
       - name: Test (compile only)
-        working-directory: crates/cutile-rs
+        working-directory: cutile-rs
         run: |
           source "${HOME}/.cargo/env"
           cargo test --no-run
 
       - name: CPU only tests
-        working-directory: crates/cutile-rs
+        working-directory: cutile-rs
         run: |
           source "${HOME}/.cargo/env"
           ./scripts/run_cpu_tests.sh
@@ -145,19 +145,19 @@ jobs:
           rustup component add miri rust-src
 
       - name: loom model check (interleavings + weak memory)
-        working-directory: crates/cutile-rs
+        working-directory: cutile-rs
         run: |
           source "${HOME}/.cargo/env"
           RUSTFLAGS="--cfg loom" cargo test -p cuda-async --lib loom_
 
       - name: miri (UnsafeCell / pointer UB)
-        working-directory: crates/cutile-rs
+        working-directory: cutile-rs
         run: |
           source "${HOME}/.cargo/env"
           cargo miri test -p cuda-async --lib slot_table
 
       - name: ThreadSanitizer (sampled data races, full-scale stress)
-        working-directory: crates/cutile-rs
+        working-directory: cutile-rs
         run: |
           source "${HOME}/.cargo/env"
           # setarch -R pre-disables ASLR so TSan doesn't need to re-exec itself
