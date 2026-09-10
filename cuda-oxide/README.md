@@ -23,7 +23,7 @@ The workspace combines:
 
 CUDA SIMT kernels can be written natively in pure Rust -- no DSLs, no foreign language bindings -- and made available to the broader Rust community. The project is in an early stage (alpha) and under active development: you should expect bugs, incomplete features, and API breakage as we work to improve it. That said, we hope you'll try it in your own work and help shape its direction by sharing feedback on your experience.
 
-Please see [CONTRIBUTING.md](CONTRIBUTING.md) if you're interested in contributing to the project.
+Please see [CONTRIBUTING.md](../CONTRIBUTING.md) if you're interested in contributing to the project.
 
 ## Quick Start
 
@@ -233,7 +233,7 @@ sudo apt install clang-21   # or libclang-common-21-dev
 
 #### Dev Container
 
-The repository includes a standard devcontainer setup in `.devcontainer/` for a
+The repository includes a standard devcontainer setup in `../.devcontainer/` for a
 reproducible CUDA, LLVM, Clang, and Rust environment. See the
 [installation chapter](cuda-oxide-book/getting-started/installation.md#dev-container)
 for editor and CLI usage.
@@ -260,7 +260,7 @@ compiles a Rust kernel to PTX, launches it on the GPU, and prints
 
 ## Examples
 
-**190+ examples** in `crates/rustc-codegen-cuda/examples/`. Highlights:
+**190+ examples** in `cuda-oxide/crates/rustc-codegen-cuda/examples/`. Highlights:
 
 | Example              | Description                                                              |
 |----------------------|--------------------------------------------------------------------------|
@@ -369,6 +369,6 @@ cuda-oxide is one of several Rust + GPU efforts under active development. Projec
 
 ## License
 
-cuda-oxide is licensed under the Apache License, Version 2.0: [LICENSE](LICENSE).
+cuda-oxide is licensed under the Apache License, Version 2.0: [LICENSE](../LICENSE).
 Third-party components retain the licenses stated in their files; see
 [dependency-licenses.csv](dependency-licenses.csv) for the tracked license inventory.

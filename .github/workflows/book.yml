@@ -8,7 +8,10 @@ on:
   # only ever built after merge, so a PR that broke it could not be caught by
   # review or by CI.
   pull_request:
-    branches: [main]
+    branches:
+      - main
+      - "ci/**"
+      - "layout/**"
   workflow_dispatch:
 
 # Only checkout rights by default. The Pages deployment permissions live on
@@ -46,13 +49,13 @@ jobs:
           python-version: "3.13"
           cache: pip
           # One install covers both books; keep cutile-rs/cutile-book/requirements.txt
-          # in sync with cuda-oxide-book/requirements.txt for local `make setup`.
+          # in sync with cuda-oxide/cuda-oxide-book/requirements.txt for local `make setup`.
           cache-dependency-path: |
-            cuda-oxide-book/requirements.txt
+            cuda-oxide/cuda-oxide-book/requirements.txt
             cutile-rs/cutile-book/requirements.txt
 
       - name: Install dependencies
-        run: pip install -r cuda-oxide-book/requirements.txt
+        run: pip install -r cuda-oxide/cuda-oxide-book/requirements.txt
 
       # `-W` matches the Rust docs gate, which builds under
       # RUSTDOCFLAGS="-D warnings". Without it a broken cross-reference, a
@@ -62,8 +65,8 @@ jobs:
       - name: Build cuda-oxide Sphinx site
         run: >-
           sphinx-build -W --keep-going -b html
-          -d cuda-oxide-book/_build/doctrees
-          cuda-oxide-book _site
+          -d cuda-oxide/cuda-oxide-book/_build/doctrees
+          cuda-oxide/cuda-oxide-book _site
 
       # GitHub Pages allows one artifact per repository. Nest the former
       # cutile-rs Pages site under /cutile-rs/ so both books share one deploy.

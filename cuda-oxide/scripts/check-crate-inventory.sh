@@ -35,7 +35,7 @@ export LC_ALL=C
 
 cd "$(dirname "$0")/.."
 
-MANIFEST=Cargo.toml
+MANIFEST=../Cargo.toml
 README=README.md
 BOOK_MAP=cuda-oxide-book/compiler/architecture-overview.md
 
