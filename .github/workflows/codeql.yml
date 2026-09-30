@@ -5,10 +5,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches:
-      - main
-      - "ci/**"
-      - "layout/**"
+    branches: [main]
   schedule:
     - cron: "44 3 * * 6"
 

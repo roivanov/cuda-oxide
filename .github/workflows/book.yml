@@ -8,10 +8,7 @@ on:
   # only ever built after merge, so a PR that broke it could not be caught by
   # review or by CI.
   pull_request:
-    branches:
-      - main
-      - "ci/**"
-      - "layout/**"
+    branches: [main]
   workflow_dispatch:
 
 # Only checkout rights by default. The Pages deployment permissions live on

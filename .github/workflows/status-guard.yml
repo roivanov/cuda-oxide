@@ -5,10 +5,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches:
-      - main
-      - "ci/**"
-      - "layout/**"
+    branches: [main]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}
@@ -152,7 +149,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Verify prose references name tracked files or declared outputs
-        run: bash scripts/check-source-references.sh
+        run: bash cuda-oxide/scripts/check-source-references.sh
 
   # The dialect-nvvm book page prints the catalog SHA-256 and states its own
   # freshness rule: if the stamp no longer matches, every count on the page
